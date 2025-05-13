@@ -2,7 +2,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Prueba de usuarios para que no se jaja eisde jas asa ya le ahya a este pedo jahs as</h1>
+      <h1>Prueba de usuarios</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>

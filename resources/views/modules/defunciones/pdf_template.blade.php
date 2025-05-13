@@ -12,99 +12,113 @@
         </style>
     </head>
     <body>
-        <h1>Información del Fallecido</h1>
+        <h1>Certificado de Defunción</h1>
         <div class="info">
-            <p>Nombre: {{ $fallecido->nombre ?? 'N/D' }}</p>
+            <h2>Información del Fallecido</h2>
+            <p>Nombre: {{ $fallecido->nombre_fallecido ?? 'N/D' }}</p>
             <p>Apellido Paterno: {{ $fallecido->apellido_paterno ?? 'N/D' }}</p>
             <p>Apellido Materno: {{ $fallecido->apellido_materno ?? 'N/D' }}</p>
             <p>Fecha de Nacimiento: {{ $fallecido->fecha_nacimiento ?? 'N/D' }}</p>
             <p>Sexo: {{ $fallecido->sexo ?? 'N/D' }}</p>
             <p>CURP: {{ $fallecido->CURP ?? 'N/D' }}</p>
         </div>
-
+        <!--/////////////////////////////////////Origen Etnico////////////////////////////////////////////////// -->
         <div class="row">
-            <h2 class="section-title">Información de Entidades</h2>
+            <h2 class="section-title">Origen Étnico</h2>
             <div class="info">
-                <p>Entidad de Nacimiento: {{ $fallecido->entidad_nacimiento_ ?? 'N/D' }}</p>
-                <p>Afromexicano: {{ isset($fallecido->afromexicano) ? ($fallecido->afromexicano ? 'Sí' : 'No') : 'N/D' }}</p>
-                <p>Indígena: {{ isset($fallecido->indigena) ? ($fallecido->indigena ? 'Sí' : 'No') : 'N/D' }}</p>
+                <p>Entidad de Nacimiento: {{ $fallecido->entidades->entidad_nacimiento_ ?? 'N/D' }}</p>
+                <p>Afromexicano: {{ isset($fallecido->entidades->afromexicano) ? ($fallecido->afromexicano ? 'Sí' : 'No') : 'N/D' }}</p>
+                <p>Indígena: {{ isset($fallecido->entidades->indigena) ? ($fallecido->indigena ? 'Sí' : 'No') : 'N/D' }}</p>
+                <p>9.-Nacionalidad: {{$fallecido->infoFallecido->nacionalidad ?? 'N/D'}}</p>
             </div>
         </div>
 
-        <div class="row">
-            <h2 class="section-title">Información de Residencia</h2>
-            <div class="info">
-                <p>Localidad: {{ $fallecido->localidad ?? 'N/D' }}</p>
-                <p>Municipio: {{ $fallecido->municipio ?? 'N/D' }}</p>
-                <p>Código Postal: {{ $fallecido->codigo_postal ?? 'N/D' }}</p>
-                <p>Calle: {{ $fallecido->calle ?? 'N/D' }}</p>
-                <p>Número Exterior: {{ $fallecido->numero_ext ?? 'N/D' }}</p>
-                <p>Número Interior: {{ $fallecido->numero_int ?? 'N/D' }}</p>
-                <p>Tipo de Asentamiento Humano: {{ $fallecido->tipo_asentamiento_humano ?? 'N/D' }}</p>
-                <p>Nombre de Asentamiento Humano: {{ $fallecido->nombre_asentamiento_humano ?? 'N/D' }}</p>
-                <p>País: {{ $fallecido->pais ?? 'N/D' }}</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <h2 class="section-title">Información de Edad al Fallecer</h2>
-            <div class="info">
-                <p>Folio Certificado Nacimiento: {{ $fallecido->folio_certificado_naci ?? 'N/D' }}</p>
-                <p>Peso al Nacimiento: {{ $fallecido->peso_nacimiento ?? 'N/D' }}</p>
-                <p>Semanas de Gestación: {{ $fallecido->semanas_gestacion ?? 'N/D' }}</p>
-            </div>
-        </div>
-
+        <!--/////////////////////////////////////Datos edad cumplida ////////////////////////////////////////////////// -->
         <div class="row">
             <h2 class="section-title">Datos de Edad Cumplida</h2>
             <div class="info">
-                <p>Años Cumplidos: {{ $fallecido->años_cumplidos ?? 'N/D' }}</p>
-                <p>Meses: {{ $fallecido->meses ?? 'N/D' }}</p>
-                <p>Días: {{ $fallecido->dias ?? 'N/D' }}</p>
-                <p>Horas: {{ $fallecido->horas ?? 'N/D' }}</p>
-                <p>Minutos: {{ $fallecido->minutos ?? 'N/D' }}</p>
+                <p>Años Cumplidos: {{ $fallecido->edad->edadCumplidaDetalle->años_cumplidos ?? '20' }}</p>
+                <p>Meses: {{ $fallecido->edad->meses ?? 'N/D' }}</p>
+                <p>Días: {{ $fallecido->edad->edadCumplidaDetalle->dias ?? 'N/D' }}</p>
+                <p>Horas: {{ $fallecido->edad->edadCumplidaDetalle->horas ?? 'N/D' }}</p>
+                <p>Minutos: {{ $fallecido->edad->edadCumplidaDetalle->minutos ?? 'N/D' }}</p>
             </div>
         </div>
+        <!--/////////////////////////////////////Edad al Fallecer ////////////////////////////////////////////////// -->
+        <div class="row">
+            <h2 class="section-title">Edad al Fallecer</h2>
+            <div class="info">
+                <p>Folio Certificado Nacimiento: {{ $fallecido->edad->folio_certificado_naci ?? 'N/D' }}</p>
+                <p>Peso al Nacimiento: {{ $fallecido->edad->peso_nacimiento ?? 'N/D' }}</p>
+                <p>Semanas de Gestación: {{ $fallecido->edad->semanas_gestacion ?? 'N/D' }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="section-title">Situación Conyugal</h2>
+            <div class="info">
+                <p>Estado Civil: {{ $fallecido->infoFallecido->situacion_conyugal ?? 'N/D'}}</p>
+            </div>
+        </div>
+        <!--/////////////////////////////////////Residencia ////////////////////////////////////////////////// -->
+        <div class="row">
+            <h2 class="section-title">Residencia</h2>
+            <div class="info">
+                <p>Localidad: {{ $fallecido->residencia->localidad ?? 'N/D' }}</p>
+                <p>Municipio: {{ $fallecido->residencia->municipio ?? 'N/D' }}</p>
+                <p>Código Postal: {{ $fallecido->residencia->codigo_postal ?? 'N/D' }}</p>
+                <p>Calle: {{ $fallecido->residencia->calle ?? 'N/D' }}</p>
+                <p>Número Exterior: {{ $fallecido->residencia->numero_ext ?? 'N/D' }}</p>
+                <p>Número Interior: {{ $fallecido->residencia->numero_int ?? 'N/D' }}</p>
+                <p>Tipo de Asentamiento Humano: {{ $fallecido->residencia->tipo_asentamiento_humano ?? 'N/D' }}</p>
+                <p>Nombre de Asentamiento Humano: {{ $fallecido->residencia->nombre_asentamiento_humano ?? 'N/D' }}</p>
+                <p>País: {{ $fallecido->residencia->pais ?? 'N/D' }}</p>
+            </div>
+        </div>
+        <!--///////////////////////////////////////Escolaridad //////////////////////////////////////////////-->
 
+        <div class="row">
+            <h2 class="section-title">Escolaridad</h2>
+            <div class="info">
+                    <p>Escolaridad {{ $fallecido->infoFallecido->escolaridad ?? 'N/D' }}</p>
+                    <p>Escolaridad Completa :{{$fallecido->infoFallecido->escolaridad_completa ?? 'N/D'}}</p>
+                    <p>¿Trabaja? {{$fallecido->infoFallecido->trabajador ?? 'N/D'}}</p>
+                    <p>Afiliación a Servicios de Salud: {{$fallecido->infoFallecido->afiliacion_servicios_salud ?? 'N/D'}}</p>
+                    <p>Numero de Afiliación: {{$fallecido->infoFallecido->numero_afiliacion_social ?? 'N/D'}}</p>
+                    <p>Ocupación Habitual: {{$fallecido->infoFallecido->ocupacion_habitual ?? 'N/D'}}</p>
+            </div>
+        </div>
+        <!--/////////////////////////////////////Datos del informante ////////////////////////////////////////////////// -->
         <div class="row">
             <h2 class="section-title">Datos del Informante</h2>
             <div class="info">
-                @if($fallecido->nombre_informante)
-                    <p>Nombre del Informante: {{ $fallecido->nombre_informante ?? 'N/D' }}</p>
-                    <p>Primer Apellido: {{ $fallecido->primer_apellido_informante ?? 'N/D' }}</p>
-                    <p>Segundo Apellido: {{ $fallecido->segundo_apellido_informante ?? 'N/D' }}</p>
-                    <p>Parentesco con el Fallecido: {{ $fallecido->parentesco_con_fallecido ?? 'N/D' }}</p>
-                @else
-                    <p>No se encontraron datos del informante.</p>
-                @endif
+                    <p>Nombre del Informante: {{ $fallecido->informante->nombre_informante ?? 'N/d' }}</p>
+                    <p>Primer Apellido: {{ $fallecido->informante->primer_apellido_informante ?? 'N/D' }}</p>
+                    <p>Segundo Apellido: {{ $fallecido->informante->segundo_apellido_informante ?? 'N/D' }}</p>
+                    <p>Parentesco con el Fallecido: {{ $fallecido->informante->parentesco_con_fallecido ?? 'N/D' }}</p>
+                    <p>Firma Informante: {{$fallecido->informante->firma_informante ?? 'N/D'}}</p>
+                    <p>19.- Sitio donde Ocurrio la defuncion: {{$fallecido->informante->sitio_defuncion ?? 'N/D'}}</p>
+                    <p>19.1.-Nombre de la Unidad Medica: {{$fallecido->informante->nombre_unidad_medica ?? 'N/D'}}</p>
+                    <p>19.2.- Clave de Establecimientos de Salud :<{{$fallecido->informante->clave_establecimientos_salud ?? 'N/D'}}/p>
+            </div>
+        </div>
+        <!--/////////////////////////////////////Domicilio de Defuncion ////////////////////////////////////////////////// -->
+        <div class="row">
+            <h2 class="section-title">Domicilio de Defunción</h2>
+            <div class="info">
+                    <p>Tipo de Vialidad: {{ $fallecido->domicilioDefuncion->tipo_vialidad_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Nombre de Vialidad: {{ $fallecido->domicilioDefuncion->nombre_vialidad_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Número Exterior: {{ $fallecido->domicilioDefuncion->num_exterior_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Número Interior: {{ $fallecido->domicilioDefuncion->num_interior_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Asentamiento Humano: {{ $fallecido->domicilioDefuncion->asentamiento_humano_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Nombre del Asentamiento: {{ $fallecido->domicilioDefuncion->nombre_asentamiento_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Código Postal: {{ $fallecido->domicilioDefuncion->codigoPostal_lugar_defuncion ?? 'N/D' }}</p>
+                    <p>Localidad: {{ $fallecido->domicilioDefuncion->lugar_defuncion_localidad ?? 'N/D' }}</p>
+                    <p>Municipio: {{ $fallecido->domicilioDefuncion->lugar_defuncion_municipio ?? 'N/D' }}</p>
+                    <p>Entidad Federativa: {{ $fallecido->domicilioDefuncion->entidadFederativa_lugar_defuncion ?? 'N/D' }}</p>
             </div>
         </div>
 
-
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-
-<div class="row">
-    <h2 class="section-title">Domicilio de Defunción</h2>
-    <div class="info">
-        @if ($fallecido->domicilioDefuncion)
-            <p>Tipo de Vialidad: {{ $fallecido->domicilioDefuncion->tipo_vialidad_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Nombre de Vialidad: {{ $fallecido->domicilioDefuncion->nombre_vialidad_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Número Exterior: {{ $fallecido->domicilioDefuncion->num_exterior_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Número Interior: {{ $fallecido->domicilioDefuncion->num_interior_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Asentamiento Humano: {{ $fallecido->domicilioDefuncion->asentamiento_humano_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Nombre del Asentamiento: {{ $fallecido->domicilioDefuncion->nombre_asentamiento_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Código Postal: {{ $fallecido->domicilioDefuncion->codigoPostal_lugar_defuncion ?? 'N/D' }}</p>
-            <p>Localidad: {{ $fallecido->domicilioDefuncion->lugar_defuncion_localidad ?? 'N/D' }}</p>
-            <p>Municipio: {{ $fallecido->domicilioDefuncion->lugar_defuncion_municipio ?? 'N/D' }}</p>
-            <p>Entidad Federativa: {{ $fallecido->domicilioDefuncion->entidadFederativa_lugar_defuncion ?? 'N/D' }}</p>
-        @else
-            <p>No se encontró información del domicilio de defunción.</p>
-        @endif
-    </div>
-</div>
-
-
-
+        <!--/////////////////////////////////////Detalles de la defuncion ////////////////////////////////////////////////// -->
             <h2 class="section-title">Detalles de la Defunción</h2>
             @if ($fallecido->detallesDefuncion)
             <table class="table table-bordered">
@@ -124,151 +138,155 @@
             @else
             <p>No se encontraron detalles de la defunción.</p>
             @endif
-
-            <h2 class="section-title">Causas de la Defunción</h2>
-            @if (isset($data['causasDefuncion']))
-            <table class="table table-bordered">
-                <tbody>
-                    <tr><th>Causa A</th><td>{{ $data['causasDefuncion']['causa_a'] }}</td></tr>
-                    <tr><th>Intervalo A</th><td>{{ $data['causasDefuncion']['intervalo_a'] }}</td></tr>
-                    <tr><th>Cadena de Afectaciones</th><td>{{ $data['causasDefuncion']['cadena_afectaciones'] }}</td></tr>
-                    <tr><th>Otras Condiciones</th><td>{{ $data['causasDefuncion']['otras_condiciones'] }}</td></tr>
-                    <tr><th>Código CIE</th><td>{{ $data['causasDefuncion']['codigo_cie'] }}</td></tr>
-                </tbody>
-            </table>
-            @else
-            <p>No se encontraron causas de la defunción.</p>
-            @endif
+            <!--/////////////////////////////////////Causas de la defuncion ////////////////////////////////////////////////// -->
+            <div class="row">
+                <h2 class="section-title">Causas de la Defunción</h2>
+                <div class="info">
+                    <p>Causa A: {{ $fallecido->causasDefuncion->causa_a ?? 'N/D' }}</p>
+                    <p>Intervalo A: {{ $fallecido->causasDefuncion->intervalo_a ?? 'N/D' }}</p>
+                    <p>Cadena de Afectaciones: {{ $fallecido->causasDefuncion->cadena_afectaciones ?? 'N/D' }}</p>
+                    <p>Otras Condiciones: {{ $fallecido->causasDefuncion->otras_condiciones ?? 'N/D' }}</p>
+                    <p>Código CIE: {{ $fallecido->causasDefuncion->codigo_cie ?? 'N/D' }}</p>
+                </div>
+            </div>
             
-
-            <h2 class="section-title">Necropsia</h2>
-            @if (isset($data['necropsiaDefuncion']))
-            <table class="table table-bordered">
-                <tbody>
-                    <tr><th>Se realizó Necropsia</th><td>{{ $data['necropsiaDefuncion']['necropsia'] ? 'Sí' : 'No' }}</td></tr>
-                    @if ($data['necropsiaDefuncion']['necropsia'])
-                        <tr><th>Hallazgos de la Necropsia</th><td>{{ $data['necropsiaDefuncion']['hallazgos_necropsia'] }}</td></tr>
+            
+            <!--/////////////////////////////////////  Necropsia ////////////////////////////////////////////////// -->
+            <div class="row">
+                <h2 class="section-title">Necropsia</h2>
+                <div class="info">
+                    <p>Se realizó Necropsia: {{ $fallecido->necropsiaDefuncion->necropsia ? 'Sí' : 'No' }}</p>
+                    @if ($fallecido->necropsiaDefuncion->necropsia)
+                        <p>Hallazgos de la Necropsia: {{ $fallecido->necropsiaDefuncion->hallazgos_necropsia ?? 'N/D' }}</p>
                     @endif
-                </tbody>
-            </table>
-            @else
-            <p>No se encontró información sobre la necropsia.</p>
-            @endif
+                </div>
+            </div>            
             
-
-            <h2 class="section-title">Información Adicional (Mujeres)</h2>
-            @if (isset($data['defuncionMujer']))
-            <table class="table table-bordered">
-                <tbody>
-                    <tr><th>Muerte durante el Embarazo, Parto o Puerperio</th><td>{{ $data['defuncionMujer']['muerte_embarazo'] }}</td></tr>
-                    <tr><th>Causas Asociadas al Embarazo, Parto o Puerperio</th><td>{{ $data['defuncionMujer']['causas_embarazo'] }}</td></tr>
-                    <tr><th>Complicaciones del Embarazo, Parto o Puerperio</th><td>{{ $data['defuncionMujer']['complicaciones_embarazo'] }}</td></tr>
-                </tbody>
-            </table>
-            @else
-            <p>Esta sección aplica solo si el fallecido es mujer.</p>
-            @endif
+            <!--/////////////////////////////////////Informacion Adicional Mujer ////////////////////////////////////////////////// -->
+            <div class="row">
+                <h2 class="section-title">Información Adicional (Mujeres)</h2>
+                <div class="info">
+                    <p>Muerte durante el Embarazo, Parto o Puerperio: {{ $fallecido->defuncionMujer->muerte_embarazo ?? 'N/D' }}</p>
+                    <p>Causas Asociadas al Embarazo, Parto o Puerperio: {{ $fallecido->defuncionMujer->causas_embarazo ?? 'N/D' }}</p>
+                    <p>Complicaciones del Embarazo, Parto o Puerperio: {{ $fallecido->defuncionMujer->complicaciones_embarazo ?? 'N/D' }}</p>
+                </div>
+            </div>            
             
-
+        <!--/////////////////////////////////////Detalles medicos de la defuncion ////////////////////////////////////////////////// -->
         <div class="row">
             <h2 class="section-title">Detalles Médicos de la Defunción</h2>
             <div class="info">
-                @if (isset($data['detallesMedicos']))
-                    <p>Muerte Encefálica: {{ $data['detallesMedicos']['muerte_encefalica'] ? 'Sí' : 'No' }}</p>
-                    <p>Donación de Órganos: {{ $data['detallesMedicos']['donacion_organos'] ? 'Sí' : 'No' }}</p>
-                    <p>Causa Básica de la Defunción: {{ $data['detallesMedicos']['causa_basica'] }}</p>
-                    <p>Código Adicional: {{ $data['detallesMedicos']['codigo_adicional'] }}</p>
-                    <p>¿La Defunción Ocurrió Durante el Desempeño de su Trabajo?: {{ $data['detallesMedicos']['desempeno_trabajo'] }}</p>
-                    @if ($data['detallesMedicos']['defuncion_violenta'])
-                        <p>Lugar Donde Ocurrió la Lesión: {{ $data['detallesMedicos']['lugar_lesion'] }}</p>
-                        <p>¿Se levantó Acta por el Ministerio Público?: {{ $data['detallesMedicos']['acta_ministerio'] }}</p>
-                        <p>Relación del Fallecido con el Presunto Agresor: {{ $data['detallesMedicos']['relacion_agresor'] }}</p>
-                        <p>Descripción de la Lesión: {{ $data['detallesMedicos']['descripcion_lesion'] }}</p>
-                    @endif
-                @else
-                    <p>No se encontraron detalles médicos de la defunción.</p>
+                <p>Muerte Encefálica: {{ $fallecido->detallesMedicos->muerte_encefalica ? 'Sí' : 'No' }}</p>
+                <p>Donación de Órganos: {{ $fallecido->detallesMedicos->donacion_organos ? 'Sí' : 'No' }}</p>
+                <p>Causa Básica de la Defunción: {{ $fallecido->detallesMedicos->causa_basica ?? 'N/D' }}</p>
+                <p>Código Adicional: {{ $fallecido->detallesMedicos->codigo_adicional ?? 'N/D' }}</p>
+                <p>¿La Defunción Ocurrió Durante el Desempeño de su Trabajo?: {{ $fallecido->detallesMedicos->desempeno_trabajo ?? 'N/D' }}</p>
+        
+                @if ($fallecido->detallesMedicos->defuncion_violenta)
+                    <p>Lugar Donde Ocurrió la Lesión: {{ $fallecido->detallesMedicos->lugar_lesion ?? 'N/D' }}</p>
+                    <p>¿Se levantó Acta por el Ministerio Público?: {{ $fallecido->detallesMedicos->acta_ministerio ?? 'N/D' }}</p>
+                    <p>Relación del Fallecido con el Presunto Agresor: {{ $fallecido->detallesMedicos->relacion_agresor ?? 'N/D' }}</p>
+                    <p>Descripción de la Lesión: {{ $fallecido->detallesMedicos->descripcion_lesion ?? 'N/D' }}</p>
                 @endif
             </div>
         </div>
-
+        
+        <!--/////////////////////////////////////Domicilio donde Ocurrio la lesion ////////////////////////////////////////////////// -->
         <div class="row">
             <h2 class="section-title">Domicilio Donde Ocurrió la Lesión (Defunción Violenta)</h2>
             <div class="info">
-                @if (isset($data['domicilioLesion']) && isset($data['detallesMedicos']) && $data['detallesMedicos']['defuncion_violenta'])
-                    <p>Tipo de Vialidad: {{ $data['domicilioLesion']['tipo_vialidad_donde_ocurrio'] }}</p>
-                    <p>Nombre de Vialidad: {{ $data['domicilioLesion']['nombre_vialidad'] }}</p>
-                    <p>Número Exterior: {{ $data['domicilioLesion']['num_ext'] }}</p>
-                    <p>Número Interior: {{ $data['domicilioLesion']['num_int'] }}</p>
-                    <p>Tipo de Asentamiento: {{ $data['domicilioLesion']['tipo_asentamiento'] }}</p>
-                    <p>Nombre del Asentamiento: {{ $data['domicilioLesion']['nombre_asentamiento'] }}</p>
-                    <p>Código Postal: {{ $data['domicilioLesion']['ocurrio_lesion_codigo_postal'] }}</p>
-                    <p>Localidad: {{ $data['domicilioLesion']['ocurrio_lesion_localidad'] }}</p>
-                    <p>Municipio: {{ $data['domicilioLesion']['ocurrio_lesion_municipio'] }}</p>
-                    <p>Entidad Federativa: {{ $data['domicilioLesion']['entidad_federativa'] }}</p>
-                @elseif (!isset($data['detallesMedicos']) || !$data['detallesMedicos']['defuncion_violenta'])
-                    <p>Esta sección aplica solo si la defunción fue violenta.</p>
+                @if ($fallecido->detallesMedicos->defuncion_violenta)
+                    <p>Tipo de Vialidad: {{ $fallecido->domicilioLesion->tipo_vialidad_donde_ocurrio ?? 'N/D' }}</p>
+                    <p>Nombre de Vialidad: {{ $fallecido->domicilioLesion->nombre_vialidad ?? 'N/D' }}</p>
+                    <p>Número Exterior: {{ $fallecido->domicilioLesion->num_ext ?? 'N/D' }}</p>
+                    <p>Número Interior: {{ $fallecido->domicilioLesion->num_int ?? 'N/D' }}</p>
+                    <p>Tipo de Asentamiento: {{ $fallecido->domicilioLesion->tipo_asentamiento ?? 'N/D' }}</p>
+                    <p>Nombre del Asentamiento: {{ $fallecido->domicilioLesion->nombre_asentamiento ?? 'N/D' }}</p>
+                    <p>Código Postal: {{ $fallecido->domicilioLesion->ocurrio_lesion_codigo_postal ?? 'N/D' }}</p>
+                    <p>Localidad: {{ $fallecido->domicilioLesion->ocurrio_lesion_localidad ?? 'N/D' }}</p>
+                    <p>Municipio: {{ $fallecido->domicilioLesion->ocurrio_lesion_municipio ?? 'N/D' }}</p>
+                    <p>Entidad Federativa: {{ $fallecido->domicilioLesion->entidad_federativa ?? 'N/D' }}</p>
                 @else
-                    <p>No se encontró información del domicilio donde ocurrió la lesión.</p>
+                    <p>Esta sección aplica solo si la defunción fue violenta.</p>
                 @endif
             </div>
         </div>
-
-        <div class="row">
+        
+         <!--/////////////////////////////////////Datos del certificante ////////////////////////////////////////////////// -->
+         <div class="row">
             <h2 class="section-title">Datos del Certificante</h2>
             <div class="info">
-                @if (isset($data['datosCertificante']))
-                    <p>Certificada Por: {{ $data['datosCertificante']['certificada_por'] }}</p>
-                    @if ($data['datosCertificante']['certificada_por'] === 'Otro')
-                        <p>Otro Certificante: {{ $data['datosCertificante']['otro_certificada_por'] }}</p>
+                <table class="table table-bordered">
+                    <tr><th>Certificada Por</th><td>{{ $fallecido->datosCertificante->certificada_por ?? 'n/d' }}</td></tr>
+                    @if (($fallecido->datosCertificante->certificada_por ?? '') === 'Otro')
+                        <tr><th>Otro Certificante</th><td>{{ $fallecido->datosCertificante->otro_certificada_por ?? 'n/d' }}</td></tr>
                     @endif
-                    <p>Nombre del Certificante: {{ $data['datosCertificante']['nombre_certificante'] }}</p>
-                    <p>Apellido Paterno del Certificante: {{ $data['datosCertificante']['apellidoPaterno_certificante'] }}</p>
-                    <p>Apellido Materno del Certificante: {{ $data['datosCertificante']['apellidoMaterno_certificante'] }}</p>
-                    <p>¿El Certificante es Médico?: {{ $data['datosCertificante']['certificante_sies_medico'] ? 'Sí' : 'No' }}</p>
-                    <p>Firma del Certificante: {{ $data['datosCertificante']['firma_certificante'] }}</p>
-                @else
-                    <p>No se encontraron datos del certificante.</p>
-                @endif
+                    <tr><th>Nombre</th><td>{{ $fallecido->datosCertificante->nombre_certificante ?? 'n/d' }}</td></tr>
+                    <tr><th>Apellido Paterno</th><td>{{ $fallecido->datosCertificante->apellidoPaterno_certificante ?? 'n/d' }}</td></tr>
+                    <tr><th>Apellido Materno</th><td>{{ $fallecido->datosCertificante->apellidoMaterno_certificante ?? 'n/d' }}</td></tr>
+                    <tr><th>¿Es Médico?</th><td>{{ ($fallecido->datosCertificante->certificante_sies_medico ?? false) ? 'Sí' : 'No' }}</td></tr>
+                    <tr><th>Firma</th><td>{{ $fallecido->datosCertificante->firma_certificante ?? 'n/d' }}</td></tr>
+                </table>
             </div>
         </div>
+        
 
-        <div class="row">
+         <!--/////////////////////////////////////Domicilio del certificante ////////////////////////////////////////////////// -->
+         <div class="row">
             <h2 class="section-title">Domicilio del Certificante</h2>
             <div class="info">
-                @if (isset($data['domicilioCertificante']))
-                    <p>Tipo de Vialidad: {{ $data['domicilioCertificante']['tipo_vialidad_41'] }}</p>
-                    <p>Nombre de Vialidad: {{ $data['domicilioCertificante']['nombre_vialidad_41'] }}</p>
-                    <p>Número Exterior: {{ $data['domicilioCertificante']['num_ext_41'] }}</p>
-                    <p>Número Interior: {{ $data['domicilioCertificante']['num_int_41'] }}</p>
-                    <p>Tipo de Asentamiento: {{ $data['domicilioCertificante']['tipo_asentamiento_41'] }}</p>
-                    <p>Nombre del Asentamiento: {{ $data['domicilioCertificante']['nombre_asentamiento_41'] }}</p>
-                    <p>Código Postal: {{ $data['domicilioCertificante']['certificante_codigo_postal'] }}</p>
-                    <p>Localidad: {{ $data['domicilioCertificante']['certificante_localidad'] }}</p>
-                    <p>Municipio: {{ $data['domicilioCertificante']['certificante_municipio'] }}</p>
-                    <p>Entidad Federativa: {{ $data['domicilioCertificante']['entidad_federativa_41'] }}</p>
-                    <p>Teléfono: {{ $data['domicilioCertificante']['telefono_41'] }}</p>
-                    <p>Fecha de Certificación: {{ $data['domicilioCertificante']['fecha_certificacion'] }}</p>
-                @else
-                    <p>No se encontró información del domicilio del certificante.</p>
-                @endif
+                <table class="table table-bordered">
+                    <tr><th>Tipo de Vialidad</th><td>{{ $fallecido->domicilioCertificante->tipo_vialidad_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Nombre de Vialidad</th><td>{{ $fallecido->domicilioCertificante->nombre_vialidad_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Número Exterior</th><td>{{ $fallecido->domicilioCertificante->num_ext_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Número Interior</th><td>{{ $fallecido->domicilioCertificante->num_int_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Tipo de Asentamiento</th><td>{{ $fallecido->domicilioCertificante->tipo_asentamiento_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Nombre del Asentamiento</th><td>{{ $fallecido->domicilioCertificante->nombre_asentamiento_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Código Postal</th><td>{{ $fallecido->domicilioCertificante->certificante_codigo_postal ?? 'n/d' }}</td></tr>
+                    <tr><th>Localidad</th><td>{{ $fallecido->domicilioCertificante->certificante_localidad ?? 'n/d' }}</td></tr>
+                    <tr><th>Municipio</th><td>{{ $fallecido->domicilioCertificante->certificante_municipio ?? 'n/d' }}</td></tr>
+                    <tr><th>Entidad Federativa</th><td>{{ $fallecido->domicilioCertificante->entidad_federativa_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Teléfono</th><td>{{ $fallecido->domicilioCertificante->telefono_41 ?? 'n/d' }}</td></tr>
+                    <tr><th>Fecha de Certificación</th><td>{{ $fallecido->domicilioCertificante->fecha_certificacion ?? 'n/d' }}</td></tr>
+                </table>
+            </div>
+        </div>
+        
+
+
+         <!--/////////////////////////////////////Datos del registro civil ////////////////////////////////////////////////// -->
+         <div class="row">
+            <h2 class="section-title">Datos del Registro Civil</h2>
+            <div class="info">
+                <table class="table table-bordered">
+                    <tr><th>Número de Registro</th><td>{{ $fallecido->datosRegistroCivil->numero_registro ?? 'n/d' }}</td></tr>
+                    <tr><th>Número de Libro</th><td>{{ $fallecido->datosRegistroCivil->numero_libro ?? 'n/d' }}</td></tr>
+                    <tr><th>Número de Acta</th><td>{{ $fallecido->datosRegistroCivil->numero_acta ?? 'n/d' }}</td></tr>
+                    <tr><th>Localidad de Registro</th><td>{{ $fallecido->datosRegistroCivil->registro_localidad ?? 'n/d' }}</td></tr>
+                    <tr><th>Municipio de Registro</th><td>{{ $fallecido->datosRegistroCivil->registro_municipio ?? 'n/d' }}</td></tr>
+                    <tr><th>Entidad de Registro</th><td>{{ $fallecido->datosRegistroCivil->entidad_registro ?? 'n/d' }}</td></tr>
+                    <tr><th>Fecha de Registro</th><td>{{ $fallecido->datosRegistroCivil->fecha_de_registro ?? 'n/d' }}</td></tr>
+                </table>
             </div>
         </div>
 
-        <div class="row">
-            <h2 class="section-title">Datos del Registro Civil</h2>
-            <div class="info">
-                @if (isset($data['datosRegistroCivil']))
-                    <p>Número de Registro: {{ $data['datosRegistroCivil']['numero_registro'] }}</p>
-                    <p>Número de Libro: {{ $data['datosRegistroCivil']['numero_libro'] }}</p>
-                    <p>Número de Acta: {{ $data['datosRegistroCivil']['numero_acta'] }}</p>
-                    <p>Localidad de Registro: {{ $data['datosRegistroCivil']['registro_localidad'] }}</p>
-                    <p>Municipio de Registro: {{ $data['datosRegistroCivil']['registro_municipio'] }}</p>
-                    <p>Entidad de Registro: {{ $data['datosRegistroCivil']['entidad_registro'] }}</p>
-                    <p>Fecha de Registro: {{ $data['datosRegistroCivil']['fecha_de_registro'] }}</p>
-                @else
-                    <p>No se encontraron datos del Registro Civil.</p>
-                @endif
+
+        <div style="margin-top: 40px; padding: 15px 0; background-color: #f5f5f5; font-family: Arial, sans-serif;">
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 30px; height: 30px; background-color: #2c3e50; color: white; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold;">IV</div>
+                <div style="text-align: center; font-size: 11px; color: #555;">
+                    <strong>Registro Civil del Estado de Morelos</strong><br>
+                    Av. Palacio de Gobierno S/N, Cuernavaca, Morelos<br>
+                    Tel: 777 123 4567 | https://github.com/ianVifl
+                </div>
             </div>
-        </div>  
+        </div>
+
+
+        <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 10px; font-family: Arial, sans-serif; font-size: 10px; color: #555; text-align: center;">
+            Documento emitido electrónicamente por el Registro Civil de Morelos<br>
+            Fecha de emisión: 2025-05-12 | Este documento tiene validez oficial
+        </div>
+          
     </body>
 </html>
