@@ -419,7 +419,7 @@
         </div>
 
     </fieldset>
-    <!--=======================================  CARACTERISTICAS DEFUNCION =========================================== -->
+    <!--=======================================  CARACTERISTICAS/DETALLESDE LA DEFUNCION =========================================== -->
     <fieldset class="mb-4">
         <div class="row">
             <div class="col-md-4 mb-3">
@@ -592,7 +592,7 @@
             </div>    
         </div>
 
-
+        
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 mb-3">
