@@ -45,6 +45,11 @@
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
+                    <div style="text-align: center;" >
+                      <br/>
+                      <a  href="https://github.com/ianVifl" target="_blanck">¿Olvidaste tu contraseña?</a>
+                      <br/>
+                    </div>
                   </form>
                   <!-- validacion que viene de logear -->
                   <div>
